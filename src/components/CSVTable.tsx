@@ -26,7 +26,6 @@ export function CSVTable({ data, groupName, filePath }: CSVTableProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
   const [markings, setMarkings] = useState<Map<number, MarkingType>>(new Map());
-  const [isLoadingMarkings, setIsLoadingMarkings] = useState(true);
   const [filterType, setFilterType] = useState<MarkingType | 'all'>('all');
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
@@ -42,13 +41,22 @@ export function CSVTable({ data, groupName, filePath }: CSVTableProps) {
         setMarkings(markingsMap);
       } catch (error) {
         console.error('Failed to load markings:', error);
-      } finally {
-        setIsLoadingMarkings(false);
       }
     };
 
     loadMarkings();
   }, [groupName, filePath]);
+
+  const headers = data.length > 0 ? data[0] : [];
+  
+  const allRows = useMemo(() => {
+    return data.length > 0 ? data.slice(1) : [];
+  }, [data]);
+  
+  // Filter rows based on search query and marking type
+  const filteredRows = useMemo(() => {
+    return filterCSVRows(allRows, searchQuery, filterType, markings);
+  }, [allRows, searchQuery, filterType, markings]);
 
   if (data.length === 0) {
     return (
@@ -57,14 +65,6 @@ export function CSVTable({ data, groupName, filePath }: CSVTableProps) {
       </div>
     );
   }
-
-  const headers = data[0];
-  const allRows = data.slice(1);
-  
-  // Filter rows based on search query and marking type
-  const filteredRows = useMemo(() => {
-    return filterCSVRows(allRows, searchQuery, filterType, markings);
-  }, [allRows, searchQuery, filterType, markings]);
   
   const { totalPages, startIndex, endIndex } = getPaginationInfo(
     filteredRows.length,

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { apiClient, Group, GroupStructure } from '@/lib/api';
+import { apiClient, Group, GroupStructure, FolderItem } from '@/lib/api';
 import { useAuth } from '@/contexts/AuthContext';
 import {
   Table,
@@ -82,9 +82,9 @@ export default function GroupsPage() {
   const countFiles = (structure: GroupStructure): number => {
     let count = structure.files.length;
     
-    const countFolderFiles = (folder: any): number => {
+    const countFolderFiles = (folder: FolderItem): number => {
       let folderCount = folder.files.length;
-      folder.folders.forEach((subfolder: any) => {
+      folder.folders.forEach((subfolder) => {
         folderCount += countFolderFiles(subfolder);
       });
       return folderCount;

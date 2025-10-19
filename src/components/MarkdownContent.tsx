@@ -15,8 +15,8 @@ export function MarkdownContent({ content }: MarkdownContentProps) {
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
-        components={{
-          img: ({ node, ...props }) => {
+            components={{
+              img: ({ ...props }) => {
             let src = props.src || '';
             
             // If it's a local file reference, use the API asset endpoint
@@ -43,7 +43,7 @@ export function MarkdownContent({ content }: MarkdownContentProps) {
               />
             );
           },
-          a: ({ node, ...props }) => (
+              a: ({ ...props }) => (
             <a
               {...props}
               className="text-primary hover:underline"
@@ -51,7 +51,7 @@ export function MarkdownContent({ content }: MarkdownContentProps) {
               rel={props.href?.startsWith('http') ? 'noopener noreferrer' : undefined}
             />
           ),
-          code: ({ node, className, children, ...props }) => {
+          code: ({ className, children, ...props }) => {
             const match = /language-(\w+)/.exec(className || '');
             return match ? (
               <code className={className} {...props}>
@@ -66,23 +66,23 @@ export function MarkdownContent({ content }: MarkdownContentProps) {
               </code>
             );
           },
-          pre: ({ node, children, ...props }) => (
+          pre: ({ children, ...props }) => (
             <pre className="bg-muted p-4 rounded-lg overflow-x-auto" {...props}>
               {children}
             </pre>
           ),
-          table: ({ node, ...props }) => (
+              table: ({ ...props }) => (
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-border" {...props} />
             </div>
           ),
-          th: ({ node, ...props }) => (
+              th: ({ ...props }) => (
             <th className="px-4 py-2 bg-muted font-semibold text-left" {...props} />
           ),
-          td: ({ node, ...props }) => (
+              td: ({ ...props }) => (
             <td className="px-4 py-2 border-t border-border" {...props} />
           ),
-          mark: ({ node, ...props }) => (
+              mark: ({ ...props }) => (
             <mark className="bg-yellow-200 dark:bg-yellow-500/30 px-1 rounded" {...props} />
           ),
         }}

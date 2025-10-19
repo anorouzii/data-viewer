@@ -58,7 +58,7 @@ export default function GroupPage({ params }: { params: { groupSlug: string } })
     fetchGroupAndStructure();
   }, [params.groupSlug, isAuthenticated, authLoading, router]);
 
-  const handleSelectFile = (filePath: string, fileName: string) => {
+  const handleSelectFile = (filePath: string) => {
     router.push(`/${params.groupSlug}/file/${encodeURIComponent(filePath)}`);
   };
 
@@ -71,7 +71,7 @@ export default function GroupPage({ params }: { params: { groupSlug: string } })
       <div
         key={`${prefix}${file.path}`}
         className="py-2 px-4 hover:bg-muted/50 cursor-pointer rounded-md transition-colors"
-        onClick={() => handleSelectFile(file.path, file.name)}
+        onClick={() => handleSelectFile(file.path)}
       >
           <span className="text-sm">{file.name}</span>
       </div>
@@ -166,7 +166,7 @@ export default function GroupPage({ params }: { params: { groupSlug: string } })
               </Accordion>
             )}
 
-            {groupStructure.files.length === 0 && groupStructure.folders.length === 0 && (
+            {!groupStructure || (groupStructure.files.length === 0 && groupStructure.folders.length === 0) && (
               <div className="text-center text-muted-foreground py-8">
                 No files found in this group
               </div>

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export function LoginForm() {
   const [username, setUsername] = useState('');
@@ -20,7 +20,7 @@ export function LoginForm() {
 
     try {
       await login({ username, password });
-    } catch (err) {
+    } catch {
       setError('Invalid username or password');
     } finally {
       setIsLoading(false);

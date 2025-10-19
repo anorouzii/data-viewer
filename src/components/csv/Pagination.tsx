@@ -15,12 +15,7 @@ interface PaginationProps {
 export function Pagination({
   currentPage,
   totalPages,
-  startIndex,
-  endIndex,
-  totalItems,
   onPageChange,
-  showFilterInfo,
-  totalBeforeFilter,
 }: PaginationProps) {
   if (totalPages === 0) return null;
 
