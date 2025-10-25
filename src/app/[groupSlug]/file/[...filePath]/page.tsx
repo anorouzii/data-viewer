@@ -87,8 +87,8 @@ export default function FilePage({
   const processedMarkdown = !isCSV ? preprocessMarkdown(fileContent.content) : '';
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
-      <div className="max-w-5xl mx-auto">
+    <div className="min-h-screen bg-gray-50 p-1 md:p-8">
+      <div className={`${isCSV ? 'max-w-5xl' : 'max-w-4xl'} mx-auto`}>
         <FileHeader
           fileName={fileName}
           groupName={groupName}
@@ -96,7 +96,7 @@ export default function FilePage({
         />
 
         <div className="bg-card rounded-md border">
-          <div className="p-8">
+          <div className="p-4 md:p-8">
             {isCSV ? (
               <CSVTable 
                 data={csvData} 

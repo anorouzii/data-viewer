@@ -11,7 +11,7 @@ interface MarkdownContentProps {
 
 export function MarkdownContent({ content }: MarkdownContentProps) {
   return (
-    <div className="prose prose-slate dark:prose-invert max-w-none">
+    <div className="prose prose-slate dark:prose-invert !max-w-none">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
@@ -38,7 +38,7 @@ export function MarkdownContent({ content }: MarkdownContentProps) {
                 {...props}
                 src={typeof src === 'string' ? src : ''}
                 alt={props.alt || 'Image'}
-                className="rounded-lg max-w-full h-auto"
+                className="rounded-md w-full p-2 max-w-full h-auto border border-width-2"
                 loading="lazy"
               />
             );

@@ -132,10 +132,10 @@ export default function GroupPage({ params }: { params: { groupSlug: string } })
     }, 0);
 
   return (
-    <div className="min-h-screen bg-background p-8">
+    <div className="min-h-screen bg-background p-4 md:p-8">
       <div className="max-w-4xl mx-auto">
         <div className="mb-8">
-          <Button className='absolute top-8 left-8' variant="ghost" onClick={handleBackToGroups} >
+          <Button className='absolute top-8 right-8 xl:left-8 xl:right-auto' variant="ghost" onClick={handleBackToGroups} >
             <ChevronLeft className="mr-2 h-4 w-4" />
             Back to Groups
           </Button>

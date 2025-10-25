@@ -9,8 +9,8 @@ interface FileHeaderProps {
 
 export function FileHeader({ fileName, groupName, onBack }: FileHeaderProps) {
   return (
-    <div className="mb-8">
-      <Button className="absolute top-8 left-8" variant="ghost" onClick={onBack}>
+    <div className="mb-1 md:mb-8 p-6 md:px-0">
+      <Button className="absolute top-8 right-8 xl:left-8 xl:right-auto" variant="ghost" onClick={onBack}>
         <ChevronLeft className="mr-2 h-4 w-4" />
         Back to Files
       </Button>
