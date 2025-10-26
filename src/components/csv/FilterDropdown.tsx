@@ -31,35 +31,20 @@ export function FilterDropdown({ filterType, onFilterChange }: FilterDropdownPro
           All Rows
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={() => onFilterChange('marked')}>
-          <Check className={`mr-2 h-4 w-4 ${filterType === 'marked' ? 'opacity-100' : 'opacity-0'}`} />
-          <div className="w-3 h-3 rounded bg-gray-400 mr-2"></div>
-          Marked
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => onFilterChange('learned')}>
-          <Check className={`mr-2 h-4 w-4 ${filterType === 'learned' ? 'opacity-100' : 'opacity-0'}`} />
-          <div className="w-3 h-3 rounded bg-green-400 mr-2"></div>
-          Learned
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => onFilterChange('reviewing')}>
-          <Check className={`mr-2 h-4 w-4 ${filterType === 'reviewing' ? 'opacity-100' : 'opacity-0'}`} />
-          <div className="w-3 h-3 rounded bg-yellow-400 mr-2"></div>
-          Reviewing
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => onFilterChange('mastered')}>
-          <Check className={`mr-2 h-4 w-4 ${filterType === 'mastered' ? 'opacity-100' : 'opacity-0'}`} />
+        <DropdownMenuItem onClick={() => onFilterChange('meaning')}>
+          <Check className={`mr-2 h-4 w-4 ${filterType === 'meaning' ? 'opacity-100' : 'opacity-0'}`} />
           <div className="w-3 h-3 rounded bg-blue-400 mr-2"></div>
-          Mastered
+          Meaning
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => onFilterChange('difficult')}>
-          <Check className={`mr-2 h-4 w-4 ${filterType === 'difficult' ? 'opacity-100' : 'opacity-0'}`} />
-          <div className="w-3 h-3 rounded bg-red-400 mr-2"></div>
-          Difficult
+        <DropdownMenuItem onClick={() => onFilterChange('spelling')}>
+          <Check className={`mr-2 h-4 w-4 ${filterType === 'spelling' ? 'opacity-100' : 'opacity-0'}`} />
+          <div className="w-3 h-3 rounded bg-green-400 mr-2"></div>
+          Spelling
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => onFilterChange('favorite')}>
-          <Check className={`mr-2 h-4 w-4 ${filterType === 'favorite' ? 'opacity-100' : 'opacity-0'}`} />
+        <DropdownMenuItem onClick={() => onFilterChange('both')}>
+          <Check className={`mr-2 h-4 w-4 ${filterType === 'both' ? 'opacity-100' : 'opacity-0'}`} />
           <div className="w-3 h-3 rounded bg-purple-400 mr-2"></div>
-          Favorite
+          Both
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

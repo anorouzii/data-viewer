@@ -2,7 +2,7 @@ import { apiClient } from './api';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
-export type MarkingType = 'marked' | 'learned' | 'reviewing' | 'mastered' | 'difficult' | 'favorite';
+export type MarkingType = 'meaning' | 'spelling' | 'both';
 
 export interface Marking {
   id?: number;
@@ -97,18 +97,12 @@ export async function removeMarking(groupName: string, filePath: string, rowNumb
  */
 export function getMarkingClass(markingType?: MarkingType): string {
   switch (markingType) {
-    case 'learned':
-      return 'bg-green-100 hover:bg-green-200 dark:bg-green-500/20 dark:hover:bg-green-500/30';
-    case 'reviewing':
-      return 'bg-yellow-100 hover:bg-yellow-200 dark:bg-yellow-500/20 dark:hover:bg-yellow-500/30';
-    case 'mastered':
+    case 'meaning':
       return 'bg-blue-100 hover:bg-blue-200 dark:bg-blue-500/20 dark:hover:bg-blue-500/30';
-    case 'difficult':
-      return 'bg-red-100 hover:bg-red-200 dark:bg-red-500/20 dark:hover:bg-red-500/30';
-    case 'favorite':
+    case 'spelling':
+      return 'bg-green-100 hover:bg-green-200 dark:bg-green-500/20 dark:hover:bg-green-500/30';
+    case 'both':
       return 'bg-purple-100 hover:bg-purple-200 dark:bg-purple-500/20 dark:hover:bg-purple-500/30';
-    case 'marked':
-      return 'bg-gray-100 hover:bg-gray-200 dark:bg-gray-500/20 dark:hover:bg-gray-500/30';
     default:
       return 'hover:bg-muted/50';
   }
@@ -118,7 +112,7 @@ export function getMarkingClass(markingType?: MarkingType): string {
  * Get next marking type in cycle
  */
 export function getNextMarkingType(currentType?: MarkingType): MarkingType | undefined {
-  const types: (MarkingType | undefined)[] = [undefined, 'marked', 'learned', 'reviewing', 'mastered', 'difficult', 'favorite'];
+  const types: (MarkingType | undefined)[] = [undefined, 'meaning', 'spelling', 'both'];
   const currentIndex = types.indexOf(currentType);
   const nextIndex = (currentIndex + 1) % types.length;
   return types[nextIndex];
@@ -129,12 +123,9 @@ export function getNextMarkingType(currentType?: MarkingType): MarkingType | und
  */
 export function getMarkingLabel(markingType?: MarkingType): string {
   switch (markingType) {
-    case 'learned': return '✓ Learned';
-    case 'reviewing': return '↻ Reviewing';
-    case 'mastered': return '★ Mastered';
-    case 'difficult': return '! Difficult';
-    case 'favorite': return '♥ Favorite';
-    case 'marked': return '• Marked';
+    case 'meaning': return '✓ Meaning';
+    case 'spelling': return '🔤 Spelling';
+    case 'both': return '✔ Both';
     default: return 'No mark';
   }
 }

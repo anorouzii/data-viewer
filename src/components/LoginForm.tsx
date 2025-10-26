@@ -5,6 +5,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 export function LoginForm() {
   const [username, setUsername] = useState('');
@@ -28,7 +29,10 @@ export function LoginForm() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background p-4">
+    <div className="min-h-screen flex items-center justify-center bg-background p-4 relative">
+      <div className="absolute top-8 right-8">
+        <ThemeToggle />
+      </div>
       <Card className="w-full max-w-md shadow-none rounded-md">
         <CardHeader>
           <CardTitle>Login</CardTitle>

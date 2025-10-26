@@ -87,7 +87,7 @@ export default function FilePage({
   const processedMarkdown = !isCSV ? preprocessMarkdown(fileContent.content) : '';
 
   return (
-    <div className="min-h-screen bg-gray-50 p-1 md:p-8">
+    <div className="min-h-screen bg-background p-1 md:p-8">
       <div className={`${isCSV ? 'max-w-5xl' : 'max-w-4xl'} mx-auto`}>
         <FileHeader
           fileName={fileName}

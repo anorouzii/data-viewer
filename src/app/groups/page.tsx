@@ -17,6 +17,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { LogOut } from 'lucide-react';
 import logoImg from '@/assets/logo.svg';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 interface GroupWithCount extends Group {
   cardCount: number;
@@ -122,10 +123,13 @@ export default function GroupsPage() {
           <div className="flex items-center gap-4">
             <Image src={logoImg} alt="Logo" width={100} height={100} />
           </div>
-          <Button variant="outline" className="text-destructive hover:text-destructive/80 shadow-none" onClick={handleLogout}>
-            <LogOut className="w-4 h-4" />
-            Logout
-          </Button>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <Button variant="outline" className="text-destructive hover:text-destructive/80 shadow-none" onClick={handleLogout}>
+              <LogOut className="w-4 h-4" />
+              Logout
+            </Button>
+          </div>
         </div>
 
         <div className="bg-card rounded-md border">
@@ -140,7 +144,7 @@ export default function GroupsPage() {
 
             <Table>
               <TableHeader>
-                <TableRow className='bg-gray-100 border-none'>
+                <TableRow className='bg-muted/50 border-none'>
                   <TableHead>Name</TableHead>
                   <TableHead className="text-right">Count</TableHead>
                 </TableRow>

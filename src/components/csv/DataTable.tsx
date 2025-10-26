@@ -21,7 +21,7 @@ export function DataTable({ headers, rows, startIndex, markings, onRowClick }: D
     <div className="overflow-x-auto">
       <Table>
         <TableHeader>
-          <TableRow className="bg-gray-100 border-none">
+          <TableRow className="bg-muted/50 border-none">
             {headers.map((header, index) => (
               <TableHead key={index}>{header}</TableHead>
             ))}

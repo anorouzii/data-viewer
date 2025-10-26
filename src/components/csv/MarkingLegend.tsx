@@ -20,30 +20,18 @@ export function MarkingLegend() {
           <p className="text-sm text-muted-foreground">
             Click on any row to cycle through marking types:
           </p>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 gap-3">
             <div className="flex items-center gap-2 text-sm">
-              <div className="w-3 h-3 rounded bg-gray-400"></div>
-              <span>Marked</span>
+              <div className="w-3 h-3 rounded bg-blue-400"></div>
+              <span>Meaning</span>
             </div>
             <div className="flex items-center gap-2 text-sm">
               <div className="w-3 h-3 rounded bg-green-400"></div>
-              <span>Learned</span>
-            </div>
-            <div className="flex items-center gap-2 text-sm">
-              <div className="w-3 h-3 rounded bg-yellow-400"></div>
-              <span>Reviewing</span>
-            </div>
-            <div className="flex items-center gap-2 text-sm">
-              <div className="w-3 h-3 rounded bg-blue-400"></div>
-              <span>Mastered</span>
-            </div>
-            <div className="flex items-center gap-2 text-sm">
-              <div className="w-3 h-3 rounded bg-red-400"></div>
-              <span>Difficult</span>
+              <span>Spelling</span>
             </div>
             <div className="flex items-center gap-2 text-sm">
               <div className="w-3 h-3 rounded bg-purple-400"></div>
-              <span>Favorite</span>
+              <span>Both</span>
             </div>
           </div>
         </div>

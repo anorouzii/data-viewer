@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft } from 'lucide-react';
+import { ThemeToggle } from '@/components/theme-toggle';
 
 export default function GroupPage({ params }: { params: { groupSlug: string } }) {
   const router = useRouter();
@@ -133,12 +134,15 @@ export default function GroupPage({ params }: { params: { groupSlug: string } })
 
   return (
     <div className="min-h-screen bg-background p-4 md:p-8">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto relative">
         <div className="mb-8">
-          <Button className='absolute top-8 right-8 xl:left-8 xl:right-auto' variant="ghost" onClick={handleBackToGroups} >
-            <ChevronLeft className="mr-2 h-4 w-4" />
-            Back to Groups
-          </Button>
+          <div className="absolute top-4 right-0 flex items-center gap-2">
+            <ThemeToggle />
+            <Button variant="outline" onClick={handleBackToGroups}>
+              <ChevronLeft className="mr-2 h-4 w-4" />
+              Back to Groups
+            </Button>
+          </div>
           <div className="flex items-center gap-3 mb-2">
             <h1 className="tracking-tight text-xl font-bold text-foreground">{groupName.split('[')[0].trim()}</h1>
             {category && (
